@@ -1,4 +1,3 @@
-# views.py
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from .models import *
@@ -21,7 +20,6 @@ class Registration(generics.CreateAPIView):
         if serializer.is_valid():
             account = serializer.save()
             
-            # Create or retrieve token for the user
             token, created = Token.objects.get_or_create(user=account)
             token_key = token.key
 
